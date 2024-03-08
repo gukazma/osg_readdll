@@ -1,1 +1,1 @@
-add_subdirectory(Primitives)
+add_subdirectory(osgdb_reader)
