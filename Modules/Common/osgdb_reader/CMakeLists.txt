@@ -15,17 +15,22 @@ set_target_properties(${TARGET_NAME} PROPERTIES FOLDER Modules)
 target_compile_options(${TARGET_NAME} PUBLIC "$<$<COMPILE_LANG_AND_ID:CXX,MSVC>:/permissive->")
 target_compile_options(${TARGET_NAME} PUBLIC "$<$<COMPILE_LANG_AND_ID:CXX,MSVC>:/WX->")
 
+target_compile_definitions(${TARGET_NAME} PRIVATE DLL_EXPORTS)
+
+
+find_package(OpenSceneGraph REQUIRED)
 # Link dependencies    
 target_link_libraries(${TARGET_NAME} 
     PUBLIC
+    CONAN_PKG::openscenegraph
           )
 
 target_include_directories(
   ${TARGET_NAME} 
   PUBLIC 
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Include>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
 )
-
+add_compile_definitions(${OPENSCENEGRAPH_COMPILE_DEFINITIONS})
 set_target_properties(${TARGET_NAME}
     PROPERTIES
         FOLDER Modules/Common
