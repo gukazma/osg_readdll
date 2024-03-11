@@ -18,28 +18,19 @@
  * 
  * 
 -->
-# Cpp Template Project
-
-## Optional dependencies
-[llvm-project](https://github.com/llvm/llvm-project/releases)
-
-Clang format formatting code
-
-[Graphviz](https://graphviz.org/download/)
-
-Generate library dependency graph
-
-[Doxygen](https://www.doxygen.nl/download.html)
-
-Generate Code Document
+# osg_readdll
 
 ## How to use it
 ```bash
 pip install conan==1.62
 
-mkdir build
+创建build目录
 
 cd build
 
 cmake ..
+
+打开sln工程，选择Release，编译osgdb_reader
+
+编译完成后，到build/bin目录中，可以看到生成的dll文件
 ```

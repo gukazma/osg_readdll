@@ -33,5 +33,5 @@ target_include_directories(
 add_compile_definitions(${OPENSCENEGRAPH_COMPILE_DEFINITIONS})
 set_target_properties(${TARGET_NAME}
     PROPERTIES
-        FOLDER Modules/Common
+        FOLDER Modules
 )
