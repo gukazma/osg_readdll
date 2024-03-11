@@ -1,12 +1,24 @@
 #include "osgdb_reader.h"
-#include <osgDB/ReadFile>
 #include <iostream>
-_declspec(dllexport) int OpenOsgbFile(std::string filename)
+#include <osgDB/ReadFile>
+int* OpenOsgbFile(const char* file)
 {
-    auto node = osgDB::readNodeFile(filename);
-    if (!node) {
-        std::cout << "node is empty" << std::endl;
-    }
-    return 3;
+    osg::Node* node = osgDB::readNodeFile(file);
+    return (int*)node;
 }
 
+void CloseOsgbFile(int* ptr)
+{
+    osg::Node* node = (osg::Node*)ptr;
+    node->unref();
+}
+
+int GetChildCount(int* ptr)
+{
+    osg::Node* node = (osg::Node*)ptr;
+    osg::Group* group = node->asGroup();
+    if (!group) {
+        return 0;
+    }
+    return group->getNumChildren();
+}
