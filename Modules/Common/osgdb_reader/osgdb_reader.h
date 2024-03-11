@@ -7,7 +7,6 @@
 #    define API_STDEXT extern "C" _declspec(dllimport)
 #endif
 
-#include <string>
-API_STDEXT int* OpenOsgbFile(const char* file);
-API_STDEXT void CloseOsgbFile(int* ptr);
-API_STDEXT int  GetChildCount(int* ptr);
+API_STDEXT void* OpenOsgbFile(const char* file);
+API_STDEXT void  CloseOsgbFile(void* ptr);
+API_STDEXT int GetChildCount(void* ptr);
